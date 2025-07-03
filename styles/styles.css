@@ -12,12 +12,26 @@ section{
     height: 80vh;
     width: 40vw;
     border-radius: 5vw;
+
+    padding: 5vh 5vw;
 }
 
 h1{
-    font-size: 20px;
+    font-size: 40px;
 }
+ p:first-of-type{
+    margin-top: 20px;
+ }
 p{
-    font-size: 10px;
+    padding-left: 30px;
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+button{
+    background-color: peachpuff;
+    color: black;
+    height: 30px;
+    width: 100px;
 }
 

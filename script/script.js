@@ -29,6 +29,28 @@ function applicant(name, location, role, yoe, education, skills, certfications, 
         console.log(`Soft Skills: ${this.soft_skills.join(', ')}`);
         console.log(`Internships: ${this.internship}`);
     };
+
+    this.addDetailsToCard = function() {
+        const card = document.querySelector('.resume-card');
+        card.innerHTML = `
+            <h1 class="name">${this.name}</h1>
+            <p>Location: ${this.location}</p>
+            <p>Role: ${this.role}</p>
+            <p>Years of Experience: ${this.yoe}</p>
+            <p>Education: ${this.education}</p>
+            <p>Skills: ${this.skills.join(', ')}</p>
+            <p>Certifications: ${this.certfications.join(', ')}</p>
+            <p>Languages: ${this.languages.join(', ')}</p>
+            <p>Portfolio: <a href="${this.portfolio}" target="_blank">${this.portfolio}</a></p>
+            <p>Willing to Relocate: ${this.relocate ? 'Yes' : 'No'}</p>
+            <p>Remote Work Preference: ${this.remote ? 'Yes' : 'No'}</p>
+            <p>Soft Skills: ${this.soft_skills.join(', ')}</p>
+            <p>Internships: ${this.internships ? 'Yes' : 'No'}</p>
+            <button>
+            Change
+            </button>
+        `;
+    }
 }
 
 // Example usage
@@ -49,3 +71,21 @@ let applicant1 = new applicant(
 );
 
 applicant1.displayDetails();
+applicant1.addDetailsToCard();
+
+
+let btn = document.querySelector('button');
+
+btn.addEventListener('click', function() {
+    let changedValue = prompt("Enter Field you want to Change:");
+
+    for (val in applicant1){
+        if (val === changedValue) {
+            let newValue = prompt(`Enter New Value for ${changedValue}:`);
+            applicant1[changedValue] = newValue;
+            applicant1.addDetailsToCard();
+            break;
+        }
+    }
+    let newValue = prompt("Enter New Value:");
+});
