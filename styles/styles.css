@@ -1,1 +1,23 @@
-.r
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+section{
+    margin-top: 10vh;
+    margin-left: 30vw;
+    background-color: teal;
+    height: 80vh;
+    width: 40vw;
+    border-radius: 5vw;
+}
+
+h1{
+    font-size: 20px;
+}
+p{
+    font-size: 10px;
+}
+
