@@ -1,8 +1,11 @@
-function applicant(name, location, role, yoe, education, skills, certfications, languages, portfolio, relocate, remote, soft_skills, interships){
+
+// Declaring the function constructor for applicant
+// This function will create an applicant object with various properties and methods
+function applicant(name, location, role, experience, education, skills, certfications, languages, portfolio, relocate, remote, soft_skills, internships){
     this.name = name;
     this.location = location;
     this.role = role;
-    this.yoe = yoe;
+    this.experience = experience;
     this.education = education;
     this.skills = skills;
     this.certfications = certfications;
@@ -11,14 +14,14 @@ function applicant(name, location, role, yoe, education, skills, certfications, 
     this.relocate = relocate;
     this.remote = remote;
     this.soft_skills = soft_skills;
-    this.interships = interships;
+    this.internships = internships;
 
     // Method to display the applicant's details
     this.displayDetails = function() {
         console.log(`Name: ${this.name}`);
         console.log(`Location: ${this.location}`);
         console.log(`Role: ${this.role}`);
-        console.log(`Years of Experience: ${this.yoe}`);
+        console.log(`Experience: ${this.experience}`);
         console.log(`Education: ${this.education}`);
         console.log(`Skills: ${this.skills.join(', ')}`);
         console.log(`Certifications: ${this.certfications.join(', ')}`);
@@ -27,8 +30,10 @@ function applicant(name, location, role, yoe, education, skills, certfications, 
         console.log(`Willing to Relocate: ${this.relocate}`);
         console.log(`Remote Work Preference: ${this.remote}`);
         console.log(`Soft Skills: ${this.soft_skills.join(', ')}`);
-        console.log(`Internships: ${this.internship}`);
+        console.log(`Internships: ${this.internships}`);
     };
+
+    // Method to add details to the resume card in the HTML
 
     this.addDetailsToCard = function() {
         const card = document.querySelector('.resume-card');
@@ -36,16 +41,16 @@ function applicant(name, location, role, yoe, education, skills, certfications, 
             <h1 class="name">${this.name}</h1>
             <p>Location: ${this.location}</p>
             <p>Role: ${this.role}</p>
-            <p>Years of Experience: ${this.yoe}</p>
+            <p>Years of Experience: ${this.experience}</p>
             <p>Education: ${this.education}</p>
             <p>Skills: ${this.skills.join(', ')}</p>
             <p>Certifications: ${this.certfications.join(', ')}</p>
             <p>Languages: ${this.languages.join(', ')}</p>
             <p>Portfolio: <a href="${this.portfolio}" target="_blank">${this.portfolio}</a></p>
-            <p>Willing to Relocate: ${this.relocate ? 'Yes' : 'No'}</p>
-            <p>Remote Work Preference: ${this.remote ? 'Yes' : 'No'}</p>
+            <p>Willing to Relocate: ${this.relocate}</p>
+            <p>Remote Work Preference: ${this.remote}</p>
             <p>Soft Skills: ${this.soft_skills.join(', ')}</p>
-            <p>Internships: ${this.internships ? 'Yes' : 'No'}</p>
+            <p>Internships: ${this.internships}</p>
             <button>
             Change
             </button>
@@ -53,7 +58,7 @@ function applicant(name, location, role, yoe, education, skills, certfications, 
     }
 }
 
-// Example usage
+// Creating and initializing an applicant object
 let applicant1 = new applicant(
     "Emily Zhang",
     "Vancouver, BC",
@@ -70,22 +75,29 @@ let applicant1 = new applicant(
     false
 );
 
+// Calling the display deatails and adding the details to the card
 applicant1.displayDetails();
 applicant1.addDetailsToCard();
 
 
+// Accessing the button and adding an event listener to it
 let btn = document.querySelector('button');
 
+
 btn.addEventListener('click', function() {
+    // changedValue is the variablr that stores the field that is to be changed
     let changedValue = prompt("Enter Field you want to Change:");
 
+    //loop runningover keys of appilcant1 object and matching value of keys to changedValue
     for (val in applicant1){
         if (val === changedValue) {
+            // newValue is the variable that stores the new value for the field
             let newValue = prompt(`Enter New Value for ${changedValue}:`);
             applicant1[changedValue] = newValue;
+
+            // Displaying the updated details in the card
             applicant1.addDetailsToCard();
             break;
         }
     }
-    let newValue = prompt("Enter New Value:");
 });
